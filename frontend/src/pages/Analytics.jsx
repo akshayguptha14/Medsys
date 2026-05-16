@@ -12,7 +12,7 @@ const Analytics = () => {
 
   const fetchAnalytics = async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/analytics', {
+      const res = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/analytics`, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
       });
       const result = await res.json();

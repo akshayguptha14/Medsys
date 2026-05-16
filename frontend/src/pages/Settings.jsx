@@ -23,7 +23,7 @@ const Settings = () => {
 
   const fetchLogs = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/logs', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/logs`, {
         headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
       });
       const data = await response.json();
@@ -53,7 +53,7 @@ const Settings = () => {
     setSuccessMsg('');
 
     try {
-      const response = await fetch('http://localhost:5000/api/auth/profile', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/auth/profile`, {
         method: 'PUT',
         headers: { 
           'Content-Type': 'application/json',

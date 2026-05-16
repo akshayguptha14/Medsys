@@ -14,7 +14,7 @@ const Doctors = () => {
   const fetchDoctors = async () => {
     try {
       setIsLoading(true);
-      const res = await fetch('http://localhost:5000/api/doctors', {
+      const res = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/doctors`, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
       });
       const data = await res.json();

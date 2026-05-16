@@ -42,7 +42,7 @@ const Patients = () => {
   const fetchPatients = async () => {
     try {
       setIsLoading(true);
-      const res = await fetch('http://localhost:5000/api/patients', {
+      const res = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/patients`, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
       });
       const data = await res.json();

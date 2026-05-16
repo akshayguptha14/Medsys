@@ -21,7 +21,7 @@ const DoctorForm = () => {
     e.preventDefault();
     setIsLoading(true);
     try {
-      const response = await fetch('http://localhost:5000/api/doctors', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/doctors`, {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',

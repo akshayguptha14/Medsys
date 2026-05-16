@@ -23,14 +23,14 @@ const AppointmentForm = () => {
     try {
       const headers = { 'Authorization': `Bearer ${localStorage.getItem('token')}` };
       
-      const pRes = await fetch('http://localhost:5000/api/patients', { headers });
+      const pRes = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/patients`, { headers });
       const pData = await pRes.json();
       if(Array.isArray(pData)) {
         setPatients(pData);
         if(pData.length > 0) setFormData(prev => ({ ...prev, patient_id: pData[0].id }));
       }
 
-      const dRes = await fetch('http://localhost:5000/api/doctors', { headers });
+      const dRes = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/doctors`, { headers });
       const dData = await dRes.json();
       if(Array.isArray(dData)) {
         setDoctors(dData);
@@ -49,7 +49,7 @@ const AppointmentForm = () => {
     e.preventDefault();
     setIsLoading(true);
     try {
-      const response = await fetch('http://localhost:5000/api/appointments', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/appointments`, {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',
